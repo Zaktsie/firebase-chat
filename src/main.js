@@ -1,8 +1,14 @@
-import { createApp } from 'vue'
+
 import App from './App.vue'
+import Vue from 'vue'
 import router from './router'
-import Chat from './components/Chat-item.vue'
-import Room from './components/Chat-Room.vue'
-import AddRoom from './components/Add-Room.vue'
-import Login from './components/Login-item.vue'
-createApp(App).use(router).mount('#app')
+import VueChatScroll from 'vue-chat-scroll'
+import './plugins/bootstrap-vue'
+
+Vue.config.productionTip = false
+Vue.use(VueChatScroll)
+
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#app')

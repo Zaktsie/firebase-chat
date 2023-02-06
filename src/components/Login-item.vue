@@ -1,5 +1,47 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+ 
+<b-row>
+  <b-col cols="12">
+    <h2>Login</h2>
+    <b-jumbotron>
+      <b-form @submit="onsubmit">
+      <b-form-group>
+        <b-form-input id="nickname" v-model.trim="login.nickname" aria-placeholder="Enter your nickname"></b-form-input>
+      </b-form-group>
+      <b-button type="submit" variant="primary" :disabled="!login.nickname">Login</b-button>
+      </b-form>
+    </b-jumbotron>
+  </b-col>
+</b-row>
 </template>
+
+<script>
+import router from '@/router';
+
+
+export default {
+  name:  'AddBoard',
+  data () {
+    return {
+      login:  {nickname: '' }
+    }
+  },
+  methods:  {
+    onsubmit (evt) {
+      evt.preventDefault()
+
+
+      router.push({
+        name:  'RoomList',
+        params:  {nickname:  this.login.nickname}
+      })
+    }
+  }
+}
+</script>
+
+<style>
+.jumbotron {
+  padding: 2rem;
+}
+</style>
