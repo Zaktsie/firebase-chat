@@ -1,5 +1,13 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+<b-row>
+  <b-col cols="12">
+    <h2>
+      Room List
+      <b-link href="/add-room">(Add Room)</b-link>
+    </h2>
+    <b-list-group>
+      <b-list-group-item v-for="room in rooms" :key="room.key" :to="{name: 'Chat', params: {nickname: nickname, roomid:room.key, roomname: room.roomname}}" action>{{ room.roomname }}</b-list-group-item>
+    </b-list-group>
+  </b-col>
+  </b-row>
 </template>
